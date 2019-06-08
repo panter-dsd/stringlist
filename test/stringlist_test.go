@@ -56,3 +56,12 @@ func TestStringList_Contains(t *testing.T) {
 	assert.True(t, (&sl.StringList{"b", "c"}).Contains("c"))
 	assert.True(t, (&sl.StringList{"c"}).Contains("c"))
 }
+
+func TestStringList_ForEach(t *testing.T) {
+	a := sl.StringList{"a", "b", "c"}
+	i := 0
+	a.ForEach(func(s string) {
+		assert.Equal(t, a[i], s)
+		i++
+	})
+}

@@ -40,3 +40,10 @@ func (s *StringList) Contains(str string) bool {
 	}
 	return false
 }
+
+// ForEach run function from each string
+func (s *StringList) ForEach(f func(s string)) {
+	for _, str := range *s {
+		f(str)
+	}
+}
