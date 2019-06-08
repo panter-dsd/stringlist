@@ -55,6 +55,13 @@ func (s *StringList) ForEach(f func(s string)) {
 	}
 }
 
+func (s *StringList) At(index int) string {
+	if index >= 0 && index < s.Size() {
+		return (*s)[index]
+	}
+	return ""
+}
+
 func NewFromString(s, separator string) *StringList {
 	sl := StringList(strings.Split(s, separator))
 	return &sl
