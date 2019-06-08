@@ -1,6 +1,9 @@
 package stringlist
 
-import "sort"
+import (
+	"sort"
+	"strings"
+)
 
 // StringList ...
 type StringList []string
@@ -14,6 +17,10 @@ func (s *StringList) Sort() *StringList {
 // IsEmpty ...
 func (s *StringList) IsEmpty() bool {
 	return len(*s) == 0
+}
+
+func (s *StringList) Size() int {
+	return len(*s)
 }
 
 // IsEqual ...
@@ -46,4 +53,9 @@ func (s *StringList) ForEach(f func(s string)) {
 	for _, str := range *s {
 		f(str)
 	}
+}
+
+func NewFromString(s, separator string) *StringList {
+	sl := StringList(strings.Split(s, separator))
+	return &sl
 }

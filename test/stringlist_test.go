@@ -65,3 +65,10 @@ func TestStringList_ForEach(t *testing.T) {
 		i++
 	})
 }
+
+func TestStringList_FromString(t *testing.T) {
+	s := "some string with separator space"
+	l := sl.NewFromString(s, " ")
+	assert.Equal(t, 5, l.Size())
+	assert.Equal(t, sl.StringList{"some", "string", "with", "separator", "space"}, *l)
+}
